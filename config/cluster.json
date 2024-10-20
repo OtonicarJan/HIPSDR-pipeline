@@ -1,0 +1,21 @@
+{
+    "__default__" :
+    {
+        "queue"     : "long",
+        "nCPUs"     : "1",
+        "resources" : "rusage[mem=20G]",
+        "name"      : "JOBNAME.{rule}.{wildcards}",
+        "output"    : "logs/{rule}.{wildcards}.out",
+        "error"     : "logs/{rule}.{wildcards}.err"
+    },
+
+    "split_bam_by_barcode":
+    {
+        "nCPUs"     : "12"
+    },
+
+    "read_counter":
+    {
+        "queue"     : "medium"
+    }
+}

@@ -1,0 +1,4 @@
+barcodes: "config/barcodes.txt"
+bamfile: "data/atac_possorted_bam.bam"
+binsize: 1000
+docker_img: "HIPSD.sif"

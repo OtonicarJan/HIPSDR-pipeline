@@ -1,0 +1,18 @@
+import os
+import pandas as pd
+
+
+configfile: "config/config.yaml"
+
+assert(isinstance(config["binsize"], int))
+df = pd.read_csv(config["barcodes"], delimiter='\t', header=None, index_col=0)
+BARCODES = df.index.to_list()
+
+
+include: "rules/split_bam_by_barcode.smk"
+include: "rules/process_bam.smk"
+include: "rules/read_counter.smk"
+
+rule all:
+    input:
+        expand("results/readCounts/{barcode}_counts_" + str(config["binsize"]) + "kb.seg", barcode=BARCODES)
