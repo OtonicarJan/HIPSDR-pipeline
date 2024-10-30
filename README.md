@@ -13,12 +13,12 @@ cd HIPSDR-pipeline
 If you are using Singularity, do:
 
 ```bash
-singularity build HIPSD.sif docker://jotonicar/HIPSD
+singularity build HIPSD.sif docker://jotonicar/hipsd:1.0.0
 ```
 
 If you have snakemake installed, you can run the pipeline:
 ```bash
-snakemake --jobs 999 --latency-wait 60 --use-singularity --singularity-args \
+snakemake --jobs 999 --latency-wait 20 --use-singularity --singularity-args \
 "-B /cellranger/outs/" --cluster-config config/cluster.json --cluster \
 "bsub -R {cluster.resources} -q {cluster.queue} -n {cluster.nCPUs} -J {cluster.name} -o {cluster.output} -e {cluster.error}"
 ```
